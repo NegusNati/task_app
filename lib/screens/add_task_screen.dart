@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:task_app/constants.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({Key? key}) : super(key: key);
-
+  
+  final Function callbackTitle;
+  AddTaskScreen(this.callbackTitle);
   @override
   Widget build(BuildContext context) {
+    String inputTask = '';
     return Container(
       color: Color(0xff757575),
       child: Container(
         padding: EdgeInsets.only(top: 30.0, left: 30.0,right: 30.0),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
@@ -28,17 +30,22 @@ class AddTaskScreen extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              onChanged: (newtaskValue) {
+                inputTask = newtaskValue;
+              },
             ),
             SizedBox(height: 20.0,)
             ,
             TextButton(
               child: Text(
-                'Push me',
+                ' Add ',
                 style: TextStyle(
-                    color: Colors.black),
+                    color: Colors.white),
               ),
              style: TextButton.styleFrom(primary: Colors.black45,backgroundColor:Colors.lightBlueAccent, ),
-              onPressed: () {},
+              onPressed: () {
+                callbackTitle(inputTask);
+              },
             )
           ],
         ),
