@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:task_app/constants.dart';
-import 'package:task_app/models/task.dart';
 import 'package:task_app/models/task_data.dart';
 import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  
-  
+  const AddTaskScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     String inputTask = '';
     return Container(
-      color: Color(0xff757575),
+      color: const Color(0xff757575),
       child: Container(
-        padding: EdgeInsets.only(top: 30.0, left: 30.0,right: 30.0),
+        padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
         decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -24,7 +23,7 @@ class AddTaskScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
+            const Text(
               'Add Task',
               textAlign: TextAlign.center,
               style: kBottomSheetTextStyle,
@@ -36,19 +35,23 @@ class AddTaskScreen extends StatelessWidget {
                 inputTask = newtaskValue;
               },
             ),
-            SizedBox(height: 20.0,)
-            ,
+            const SizedBox(
+              height: 20.0,
+            ),
             TextButton(
-              child: Text(
-                ' Add ',
-                style: TextStyle(
-                    color: Colors.white),
+              style: TextButton.styleFrom(
+                primary: Colors.black45,
+                backgroundColor: Colors.lightBlueAccent,
               ),
-             style: TextButton.styleFrom(primary: Colors.black45,backgroundColor:Colors.lightBlueAccent, ),
               onPressed: () {
-                Provider.of<TaskData>(context,listen: false).addATask(inputTask);
+                Provider.of<TaskData>(context, listen: false)
+                    .addATask(inputTask);
                 Navigator.pop(context);
               },
+              child: const Text(
+                ' Add ',
+                style: TextStyle(color: Colors.white),
+              ),
             )
           ],
         ),

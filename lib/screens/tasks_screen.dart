@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:task_app/widgets/tasks_lists.dart';
 import 'package:task_app/screens/add_task_screen.dart';
@@ -15,8 +13,7 @@ class TasksScreen extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              builder: (context) => AddTaskScreen());
+              context: context, builder: (context) => AddTaskScreen());
         },
       ),
       backgroundColor: Colors.lightBlueAccent,
@@ -31,7 +28,7 @@ class TasksScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 35.0,
                       backgroundColor: Colors.white,
                       child: Icon(
@@ -40,10 +37,10 @@ class TasksScreen extends StatelessWidget {
                         size: 35.0,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10.0,
                     ),
-                    Text('Task App',
+                    const Text('Task App',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 50.0,
@@ -51,7 +48,8 @@ class TasksScreen extends StatelessWidget {
                         )),
                     Text(
                       '${Provider.of<TaskData>(context).taskCount} Tasks',
-                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
                   ],
                 ),
@@ -60,7 +58,7 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               // ignore: sort_child_properties_last
               child: TasksList(),
               height: 200.0,
