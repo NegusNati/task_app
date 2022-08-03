@@ -9,10 +9,10 @@ class TaskTile extends StatelessWidget {
       {required this.isChecked,
       required this.tastTitle,
       required this.checkboxCallBack});
-
+    
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+     return ListTile(
       title: Text(
         tastTitle,
         style: TextStyle(
