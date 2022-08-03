@@ -1,38 +1,27 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 import 'package:task_app/widgets/tasks_lists.dart';
-import 'package:task_app/widgets/tasks_tiles.dart';
 import 'package:task_app/screens/add_task_screen.dart';
-import 'package:task_app/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:task_app/models/task_data.dart';
 
-class TasksScreen extends StatefulWidget {
-
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
- List<Task> tasks = [
-    Task(name: 'lol'),
-    Task(name: 'nope'),
-    Task(name: 'yes'), 
-  ];
-
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
- 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
         onPressed: () {
-          showModalBottomSheet(context: context, builder: ( context)=> AddTaskScreen((newTaskTitle){
-            setState(() {
-              tasks.add(Task(name: newTaskTitle),);
-              Navigator.pop(context);
-            });
-          }));
+          showModalBottomSheet(
+              context: context,
+              builder: (context) => AddTaskScreen((newTaskTitle) {
+                    // setState(() {
+                    //   tasks.add(Task(name: newTaskTitle),);
+                    //   Navigator.pop(context);
+                    // });
+                  }));
         },
       ),
       backgroundColor: Colors.lightBlueAccent,
@@ -40,13 +29,13 @@ class _TasksScreenState extends State<TasksScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(
-                left: 30.0, right: 30.0, top: 40.0, bottom: 30),
+            padding:
+                EdgeInsets.only(left: 30.0, right: 30.0, top: 40.0, bottom: 30),
             child: Column(
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
+                  children: [
                     CircleAvatar(
                       radius: 35.0,
                       backgroundColor: Colors.white,
@@ -66,7 +55,7 @@ class _TasksScreenState extends State<TasksScreen> {
                           fontWeight: FontWeight.w700,
                         )),
                     Text(
-                  '${tasks.length} Tasks' ,
+                      '${Provider.of<TaskData>(context).taskCount} Tasks',
                       style: TextStyle(color: Colors.white, fontSize: 18.0),
                     ),
                   ],
@@ -78,7 +67,7 @@ class _TasksScreenState extends State<TasksScreen> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               // ignore: sort_child_properties_last
-              child: TasksList(tasks: tasks),
+              child: TasksList(),
               height: 200.0,
               decoration: const BoxDecoration(
                 color: Colors.white,
@@ -94,4 +83,3 @@ class _TasksScreenState extends State<TasksScreen> {
     );
   }
 }
-
