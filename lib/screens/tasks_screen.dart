@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:task_app/models/task_data.dart';
 
 class TasksScreen extends StatelessWidget {
+  const TasksScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class TasksScreen extends StatelessWidget {
         children: [
           Container(
             padding:
-                EdgeInsets.only(left: 30.0, right: 30.0, top: 40.0, bottom: 30),
+                const EdgeInsets.only(left: 30.0, right: 30.0, top: 40.0, bottom: 30),
             child: Column(
               children: [
                 Column(
@@ -60,7 +62,7 @@ class TasksScreen extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               // ignore: sort_child_properties_last
-              child: TasksList(),
+              child: const TasksList(),
               height: 200.0,
               decoration: const BoxDecoration(
                 color: Colors.white,
